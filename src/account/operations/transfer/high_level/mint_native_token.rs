@@ -182,7 +182,7 @@ impl AccountHandle {
                     .add_native_token(NativeToken::new(token_id, native_token_options.circulating_supply)?)
                     .finish_output()?,
             ];
-            self.send(outputs, options)
+            self.send(outputs, options, false)
                 .await
                 .map(|transfer_result| MintTokenTransferResult {
                     token_id,

@@ -53,6 +53,6 @@ impl AccountHandle {
                     .finish_output()?,
             )
         }
-        self.send(outputs, options).await
+        self.send(outputs, options, false).await
     }
 }
