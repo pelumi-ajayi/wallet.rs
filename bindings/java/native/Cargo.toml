@@ -47,4 +47,3 @@ flapigen = { git = "https://github.com/Dushistov/flapigen-rs", default-features 
 default = ["stronghold"]
 stronghold = ["iota-wallet/stronghold"]
 ledger-nano = ["iota-wallet/ledger-nano"]
-ledger-nano-simulator = ["iota-wallet/ledger-nano-simulator"]
