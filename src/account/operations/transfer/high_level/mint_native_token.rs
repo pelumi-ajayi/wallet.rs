@@ -194,7 +194,7 @@ impl AccountHandle {
         }
     }
 
-    // Get an existing alias output or create a new one
+    /// Get an existing alias output or create a new one
     pub(crate) async fn get_or_create_alias_output(
         &self,
         controller_address: Address,
@@ -234,7 +234,7 @@ impl AccountHandle {
                             ))
                             .finish_output()?,
                     ];
-                let transfer_result = self.send(outputs, options).await?;
+                let transfer_result = self.send(outputs, options, false).await?;
                 log::debug!("[TRANSFER] sent alias output");
                 if let Some(message_id) = transfer_result.message_id {
                     self.client.retry_until_included(&message_id, None, None).await?;
