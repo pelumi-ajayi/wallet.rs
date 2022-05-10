@@ -103,12 +103,6 @@ impl AccountHandle {
             }),
         };
 
-        println!(
-            "outputs -> {}\noptions -> {}",
-            serde_json::to_string(&outputs).unwrap(),
-            serde_json::to_string(&options).unwrap()
-        );
-
         self.send(outputs, options, true).await
     }
 
