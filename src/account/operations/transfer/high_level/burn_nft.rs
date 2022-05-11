@@ -14,7 +14,7 @@ impl AccountHandle {
         log::debug!("[TRANSFER] burn_nft");
 
         let address = self.get_sweep_remainder_address(&options).await?;
-        self.sweep_address_outputs(Address::Nft(NftAddress::new(nft_id)), address)
+        self.sweep_address_outputs(Address::Nft(NftAddress::new(nft_id)), &address)
             .await?;
 
         let (output_id, nft_output) = self.find_nft_output(nft_id).await?;
@@ -32,7 +32,7 @@ impl AccountHandle {
             }),
         };
 
-        self.send(outputs, options, false).await
+        self.send(outputs, options).await
     }
 
     fn nft_to_basic_output(nft_output: &NftOutput) -> crate::Result<Output> {

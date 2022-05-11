@@ -182,7 +182,7 @@ impl AccountHandle {
                     .add_native_token(NativeToken::new(token_id, native_token_options.circulating_supply)?)
                     .finish_output()?,
             ];
-            self.send(outputs, options, false)
+            self.send(outputs, options)
                 .await
                 .map(|transfer_result| MintTokenTransferResult {
                     token_id,
@@ -234,7 +234,7 @@ impl AccountHandle {
                             ))
                             .finish_output()?,
                     ];
-                let transfer_result = self.send(outputs, options, false).await?;
+                let transfer_result = self.send(outputs, options).await?;
                 log::debug!("[TRANSFER] sent alias output");
                 if let Some(message_id) = transfer_result.message_id {
                     self.client.retry_until_included(&message_id, None, None).await?;

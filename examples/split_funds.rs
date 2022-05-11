@@ -77,7 +77,7 @@ async fn main() -> Result<()> {
                     .unwrap()
             })
             .collect();
-        match account.send(outputs, None).await {
+        match account.send(outputs, None, false).await {
             Ok(res) => println!(
                 "Message sent: http://localhost:14265/api/v2/messages/{}",
                 res.message_id.expect("No message created yet")

@@ -19,8 +19,8 @@ use iota_client::{
         payload::transaction::{TransactionId, TransactionPayload},
         MessageId,
     },
-    secret::types::InputSigningData,
     packable::bounded::TryIntoBoundedU16Error,
+    secret::types::InputSigningData,
 };
 use serde::Serialize;
 
@@ -65,12 +65,7 @@ impl AccountHandle {
     ///     println!("Message sent: {}", message_id);
     /// }
     /// ```
-    pub async fn send(
-        &self,
-        outputs: Vec<Output>,
-        options: Option<TransferOptions>,
-        allow_burning: bool,
-    ) -> crate::Result<TransferResult> {
+    pub async fn send(&self, outputs: Vec<Output>, options: Option<TransferOptions>) -> crate::Result<TransferResult> {
         // here to check before syncing, how to prevent duplicated verification (also in send_transfer())?
         let byte_cost_config = self.client.get_byte_cost_config().await?;
 
@@ -94,8 +89,7 @@ impl AccountHandle {
             }))
             .await?;
         }
-        self.send_transfer(outputs, options, &byte_cost_config, allow_burning)
-            .await
+        self.send_transfer(outputs, options, &byte_cost_config).await
     }
 
     // Separated function from send, so syncing isn't called recursiv with the consolidation function, which sends
@@ -105,7 +99,6 @@ impl AccountHandle {
         outputs: Vec<Output>,
         options: Option<TransferOptions>,
         byte_cost_config: &ByteCostConfig,
-        allow_burning: bool,
     ) -> crate::Result<TransferResult> {
         log::debug!("[TRANSFER] send");
         // Check if the outputs have enough amount to cover the storage deposit
@@ -192,6 +185,8 @@ impl AccountHandle {
             }
             None => None,
         };
+
+        let allow_burning = options.as_ref().map_or(false, |option| option.allow_burning);
 
         let selected_transaction_data = self
             .select_inputs(

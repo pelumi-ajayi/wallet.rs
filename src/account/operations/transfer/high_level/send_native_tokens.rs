@@ -116,6 +116,6 @@ impl AccountHandle {
                     .finish_output()?,
             )
         }
-        self.send(outputs, options, false).await
+        self.send(outputs, options).await
     }
 }

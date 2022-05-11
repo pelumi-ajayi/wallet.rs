@@ -362,7 +362,6 @@ impl AccountHandle {
                         ..Default::default()
                     }),
                     &byte_cost_config,
-                    false,
                 )
                 .await
             {

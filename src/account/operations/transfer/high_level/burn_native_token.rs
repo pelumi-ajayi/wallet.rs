@@ -74,7 +74,7 @@ impl AccountHandle {
                     .finish()?,
                 ),
             ];
-            self.send(outputs, options, false).await
+            self.send(outputs, options).await
         } else {
             unreachable!("We checked if it's an alias output before")
         }
@@ -95,15 +95,17 @@ impl AccountHandle {
         let options = match options {
             Some(mut options) => {
                 options.custom_inputs.replace(custom_inputs);
+                options.allow_burning = true;
                 Some(options)
             }
             None => Some(TransferOptions {
                 custom_inputs: Some(custom_inputs),
+                allow_burning: true,
                 ..Default::default()
             }),
         };
 
-        self.send(outputs, options, true).await
+        self.send(outputs, options).await
     }
 
     async fn select_native_token_output(
