@@ -38,6 +38,7 @@ import type {
     __SetClientOptionsPayload__,
     __StartBackgroundSyncPayload__,
     __StopBackgroundSyncPayload__,
+    __RecoverAccountsPayload__,
     
 } from './accountManager'
 
@@ -81,6 +82,7 @@ export type __SendMessagePayload__ =
     | __GetAccountMessagePayload__
     | __GetAccountsMessagePayload__
     | __GetNodeInfoPayload__
+    | __RecoverAccountsPayload__
     | __RestoreBackupPayload__
     | __StartBackgroundSyncPayload__
     | __StopBackgroundSyncPayload__
