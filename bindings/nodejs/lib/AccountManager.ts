@@ -9,7 +9,8 @@ import type {
     EventType,
     AccountManagerOptions,
     CreateAccountPayload,
-    NodeInfo
+    NodeInfo,
+    ClientOptions
 } from '../types'
 
 export class AccountManager {
@@ -117,6 +118,14 @@ export class AccountManager {
         await this.messageHandler.sendMessage({
             cmd: 'VerifyMnemonic',
             payload: mnemonic,
+        })
+    }
+
+    // TODO check clientOptions type w/ Thoralf
+    async setClientOptions(options: ClientOptions): Promise<void> {
+        await this.messageHandler.sendMessage({
+            cmd: 'SetClientOptions',
+            payload: options,
         })
     }
 
