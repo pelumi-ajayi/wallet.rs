@@ -11,7 +11,8 @@ import type {
     CreateAccountPayload,
     NodeInfo,
     ClientOptions,
-    AccountSyncOptions
+    AccountSyncOptions,
+    WalletEvent
 } from '../types'
 
 export class AccountManager {
@@ -47,6 +48,7 @@ export class AccountManager {
         );
     }
 
+    // TODO: test this
     async recoverAccounts(accountGapLimit: number, addressGapLimit: number): Promise<Account[]> {
         const response = await this.messageHandler.sendMessage({
             cmd: 'RecoverAccounts',
@@ -163,6 +165,14 @@ export class AccountManager {
                 source,
                 password,
             },
+        });
+    }
+
+    // TODO: test this
+    async emitTestEvent(event: WalletEvent): Promise<void> {
+        await this.messageHandler.sendMessage({
+            cmd: 'EmitTestEvent',
+            payload: event,
         });
     }
 

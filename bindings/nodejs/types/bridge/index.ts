@@ -39,6 +39,7 @@ import type {
     __StartBackgroundSyncPayload__,
     __StopBackgroundSyncPayload__,
     __RecoverAccountsPayload__,
+    __EmitTestEventPayload__,
     
 } from './accountManager'
 
@@ -78,6 +79,7 @@ export type __SendMessagePayload__ =
     | __CallAccountMethodPayload__
     | __CreateAccountMessagePayload__
     | __DeleteStorageMessagePayload__
+    | __EmitTestEventPayload__
     | __GenerateMnemonicPayload__
     | __GetAccountMessagePayload__
     | __GetAccountsMessagePayload__
