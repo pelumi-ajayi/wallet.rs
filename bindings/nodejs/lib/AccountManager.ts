@@ -10,7 +10,8 @@ import type {
     AccountManagerOptions,
     CreateAccountPayload,
     NodeInfo,
-    ClientOptions
+    ClientOptions,
+    AccountSyncOptions
 } from '../types'
 
 export class AccountManager {
@@ -126,6 +127,22 @@ export class AccountManager {
         await this.messageHandler.sendMessage({
             cmd: 'SetClientOptions',
             payload: options,
+        })
+    }
+
+    async startBackgroundSync(options?: AccountSyncOptions, interval?: number): Promise<void> {
+        await this.messageHandler.sendMessage({
+            cmd: 'StartBackgroundSync',
+            payload: {
+                options,
+                interval,
+            }
+        })
+    }
+
+    async stopBackgroundSync(): Promise<void> {
+        await this.messageHandler.sendMessage({
+            cmd: 'StopBackgroundSync',
         })
     }
 

@@ -22,8 +22,6 @@ import type {
     __SendNftPayloadMethod__,
     __SendTransferPayloadMethod__,
     __TryCollectOutputsPayloadMethod__,
-    __SetClientOptionsPayload__,
-    __ListPendingTransactionsPayload__,
 } from './account';
 import type {
     __GetAccountsMessagePayload__,
@@ -37,6 +35,7 @@ import type {
     __GenerateMnemonicPayload__,
     __VerifyMnemonicPayload__,
     __DeleteStorageMessagePayload__,
+    __SetClientOptionsPayload__,
     __StartBackgroundSyncPayload__,
     __StopBackgroundSyncPayload__,
     
@@ -82,7 +81,6 @@ export type __SendMessagePayload__ =
     | __GetAccountMessagePayload__
     | __GetAccountsMessagePayload__
     | __GetNodeInfoPayload__
-    | __ListPendingTransactionsPayload__
     | __RestoreBackupPayload__
     | __StartBackgroundSyncPayload__
     | __StopBackgroundSyncPayload__
