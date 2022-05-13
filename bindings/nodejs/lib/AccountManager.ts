@@ -45,6 +45,12 @@ export class AccountManager {
         );
     }
 
+    async deleteStorage(): Promise<void> {
+        await this.messageHandler.sendMessage({
+            cmd: 'DeleteStorage',
+        })
+    }
+
 
     async getAccount(accountId: AccountId): Promise<Account> {
         const response = await this.messageHandler

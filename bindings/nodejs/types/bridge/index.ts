@@ -55,6 +55,7 @@ import type {
     __RestoreBackupPayload__,
     __GenerateMnemonicPayload__,
     __VerifyMnemonicPayload__,
+    __DeleteStorageMessagePayload__,
     
 } from './accountManager'
 
@@ -93,6 +94,7 @@ export type __SendMessagePayload__ =
     | __GetAccountsMessagePayload__
     | __GetAccountMessagePayload__
     | __CreateAccountMessagePayload__
+    | __DeleteStorageMessagePayload__
     | __CallAccountMethodPayload__
     | __SetStrongholdPasswordPayload__
     | __GenerateMnemonicPayload__
