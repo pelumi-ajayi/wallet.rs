@@ -50,7 +50,7 @@ export type __BackupPayload__ = {
     };
 }
 
-export type __ImportAccountsPayload__ = {
+export type __RestoreBackupPayload__ = {
     cmd: 'RestoreBackup'
     payload: {
         backupPath: string

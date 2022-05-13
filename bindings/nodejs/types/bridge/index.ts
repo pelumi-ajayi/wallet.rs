@@ -52,7 +52,7 @@ import type {
     __SetStrongholdPasswordPayload__,
     __StoreMnemonicPayload__,
     __BackupPayload__,
-    __ImportAccountsPayload__,
+    __RestoreBackupPayload__,
     __GenerateMnemonicPayload__,
     __VerifyMnemonicPayload__,
     
@@ -99,7 +99,7 @@ export type __SendMessagePayload__ =
     | __StoreMnemonicPayload__
     | __VerifyMnemonicPayload__
     | __BackupPayload__
-    | __ImportAccountsPayload__
+    | __RestoreBackupPayload__
     | __SyncAccountPayload__
     | __GetNodeInfoPayload__
     | __GenerateAddressesPayload__
